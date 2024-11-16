@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Estudiantes y Notas</title>
+    <link rel="stylesheet" href="css/estudiantes.css">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Estudiantes y Notas</h1>
+    </header>
+    <main>
+        <section id="gestion-estudiantes">
+            <h2>Estudiantes</h2>
+            <form id="form-estudiante">
+                <input type="hidden" id="estudiante-id">
+                <div class="campo">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" required>
+                </div>
+                <div class="campo">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="campo">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" required>
+                </div>
+                <button type="submit">Guardar</button>
+                <button type="reset">Limpiar</button>
+            </form>
+            <table id="tabla-estudiantes">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <section id="gestion-notas">
+            <h2>Notas</h2>
+            <form id="form-nota">
+                <input type="hidden" id="nota-id">
+                <div class="campo">
+                    <label for="asignatura">Asignatura:</label>
+                    <input type="text" id="asignatura" required>
+                </div>
+                <div class="campo">
+                    <label for="nota">Nota:</label>
+                    <input type="number" id="nota" step="0.1" min="0" max="5" required>
+                </div>
+                <button type="submit">Guardar Nota</button>
+                <button type="reset">Limpiar</button>
+            </form>
+            <table id="tabla-notas">
+                <thead>
+                    <tr>
+                        <th>Asignatura</th>
+                        <th>Nota</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Gestión de Estudiantes y Notas</p>
+    </footer>
+    <script src="js/estudiantes.js"></script>
+</body>
+</html>
