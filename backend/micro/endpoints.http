@@ -1,0 +1,73 @@
+### EstudianteController Endpoints
+
+# List all students
+GET http://localhost:8000/api/app/estudiantes
+
+### Get a specific student by code
+GET http://localhost:8000/api/app/estudiante
+
+# Create a new student
+POST http://localhost:8000/api/app/estudiante
+Content-Type: application/json
+Accept: application/json
+
+{
+  "cod": "12345",
+  "nombres": "Juan Perez",
+  "email": "juan.perez@example.com"
+}
+
+### Update a student by code
+PUT http://localhost:8000/api/app/estudiante
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nombres": "Juan Perez Actualizado",
+  "email": "juan.perez.actualizado@example.com"
+}
+
+# Delete a student by code
+DELETE http://localhost:8000/api/app/estudiante
+Content-Type: application/json
+Accept: application/json
+
+# List approved students
+GET http://localhost:8000/api/app/estudiantes-aprobados
+
+# List failed students
+GET http://localhost:8000/api/app/estudiantes-reprobados
+
+### NotaController Endpoints
+
+# List all notes
+GET http://localhost:8000/api/app/notas
+
+# Get a specific note by ID
+GET http://localhost:8000/api/app/nota
+
+# Create a new note
+POST http://localhost:8000/api/estudiantes/${codEstudiante}/notas
+Content-Type: application/json
+Accept: application/json
+
+{
+  "actividad": "Examen Final",
+  "nota": 4.5,
+  "codEstudiante": "12345"
+}
+
+### Update a note by ID
+PUT http://localhost:8000/api/app/nota
+Content-Type: application/json
+Accept: application/json
+
+{
+  "actividad": "Examen Parcial",
+  "nota": 3.8
+}
+
+# Delete a note by ID
+DELETE http://localhost:8000/api/app/nota
+Content-Type: application/json
+Accept: application/json

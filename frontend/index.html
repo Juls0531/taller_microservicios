@@ -11,68 +11,112 @@
         <h1>Gestión de Estudiantes y Notas</h1>
     </header>
     <main>
+        <form id="form-estudiante" onsubmit="event.preventDefault(); saveEstudiante();">
+            <h3>Registrar Estudiante</h3>
+            <div>
+                <label for="cod">Código:</label>
+                <input type="number" id="cod" required>
+            </div>
+            <div>
+                <label for="nombres">Nombre:</label>
+                <input type="text" id="nombres" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <button type="submit">Registrar</button>
+        </form>
+
         <section id="gestion-estudiantes">
             <h2>Estudiantes</h2>
-            <form id="form-estudiante">
-                <input type="hidden" id="estudiante-id">
-                <div class="campo">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" required>
-                </div>
-                <div class="campo">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="campo">
-                    <label for="telefono">Teléfono:</label>
-                    <input type="tel" id="telefono" required>
-                </div>
-                <button type="submit">Guardar</button>
-                <button type="reset">Limpiar</button>
-            </form>
-            <table id="tabla-estudiantes">
+            <table>
                 <thead>
                     <tr>
+                        <th>Código</th>
                         <th>Nombre</th>
                         <th>Email</th>
-                        <th>Teléfono</th>
+                        <th>Nota Definitiva</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody id="tabla-estudiantes">
+                </tbody>
             </table>
+
+            <div id="resumen-estudiantes">
+                <p>Aprobados: <span id="total-aprobados">0</span></p>
+                <p>Perdidos: <span id="total-perdidos">0</span></p>
+                <p>Sin notas: <span id="total-sin-notas">0</span></p>
+            </div>
+
+            <div id="filtro-estudiantes">
+                <h3>Filtrar Estudiantes</h3>
+                <input type="text" id="filtro-codigo" placeholder="Código">
+                <input type="text" id="filtro-nombre" placeholder="Nombre">
+                <input type="text" id="filtro-email" placeholder="Email">
+                <select id="filtro-estado">
+                    <option value="">Todos</option>
+                    <option value="aprobado">Aprobado</option>
+                    <option value="reprobado">Reprobado</option>
+                    <option value="sin-notas">Sin notas</option>
+                </select>
+                <button id="aplicar-filtro" onclick="applyFilterEstudiantes()">Filtrar</button>
+            </div>
         </section>
 
         <section id="gestion-notas">
             <h2>Notas</h2>
-            <form id="form-nota">
-                <input type="hidden" id="nota-id">
-                <div class="campo">
-                    <label for="asignatura">Asignatura:</label>
-                    <input type="text" id="asignatura" required>
-                </div>
-                <div class="campo">
-                    <label for="nota">Nota:</label>
-                    <input type="number" id="nota" step="0.1" min="0" max="5" required>
-                </div>
-                <button type="submit">Guardar Nota</button>
-                <button type="reset">Limpiar</button>
-            </form>
-            <table id="tabla-notas">
+
+            <div id="info-estudiante">
+                <h3>Información del Estudiante</h3>
+                <p>Código: <span id="info-codigo"></span></p>
+                <p>Nombre: <span id="info-nombre"></span></p>
+                <p>Email: <span id="info-email"></span></p>
+                <p>Promedio: <span id="info-promedio"></span></p>
+                <p>Estado: <span id="info-estado"></span></p>
+            </div>
+
+            <table>
                 <thead>
                     <tr>
-                        <th>Asignatura</th>
+                        <th>Actividad</th>
                         <th>Nota</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody id="tabla-notas">
+                </tbody>
             </table>
+
+            <div id="resumen-notas">
+                <p>Notas < 3: <span id="notas-bajas">0</span></p>
+                <p>Notas ≥ 3: <span id="notas-altas">0</span></p>
+            </div>
+
+            <form id="form-nota" onsubmit="event.preventDefault(); saveNota();">
+                <h3>Registrar Nota</h3>
+                <div>
+                    <label for="actividad">Actividad:</label>
+                    <input type="text" id="actividad" required>
+                </div>
+                <div>
+                    <label for="nota">Nota:</label>
+                    <input type="number" id="nota" step="0.01" min="0" max="5" required>
+                </div>
+                <button type="submit">Registrar</button>
+            </form>
+
+            <div id="filtro-notas">
+                <h3>Filtrar Notas</h3>
+                <input type="text" id="filtro-actividad" placeholder="Actividad">
+                <input type="number" id="filtro-nota-min" step="0.01" min="0" max="5" placeholder="Nota mínima">
+                <input type="number" id="filtro-nota-max" step="0.01" min="0" max="5" placeholder="Nota máxima">
+                <button id="aplicar-filtro-notas" onclick="applyFilterNotas()">Filtrar</button>
+            </div>
         </section>
     </main>
-    <footer>
-        <p>© 2024 Gestión de Estudiantes y Notas</p>
-    </footer>
     <script src="js/estudiantes.js"></script>
 </body>
 </html>
